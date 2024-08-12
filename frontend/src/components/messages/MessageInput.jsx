@@ -3,6 +3,7 @@ import { BsSend } from "react-icons/bs";
 import sendMessage from "../../hooks/sendMessage";
 import getUserMessages from "../../hooks/getUserMessages";
 import { useRef } from "react";
+import useListenMessage from "../../hooks/useListenMessage";
 
 function MessageInput() {
   const { getAllMessages } = getUserMessages();
@@ -16,6 +17,8 @@ function MessageInput() {
     await getAllMessages();
     setFormData("");
   };
+
+  useListenMessage();
 
   return (
     <>

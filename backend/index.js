@@ -10,13 +10,13 @@ import { app, server } from "./socket/socket.js";
 config({ path: "./config/.env" });
 databaseConnection();
 
-// server.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//     methods: ["GET", "POST"],
-//     credentials: true,
-//   })
-// );
+server.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // const server = express();
 

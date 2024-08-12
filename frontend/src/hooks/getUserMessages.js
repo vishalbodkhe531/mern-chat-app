@@ -33,6 +33,7 @@ function getUserMessages() {
   useEffect(() => {
     if (selectedConversation?._id) getAllMessages();
   }, [selectedConversation?._id, setMessages]);
+
   return { messages, loading, getAllMessages };
 }
 

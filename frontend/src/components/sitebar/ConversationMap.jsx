@@ -1,7 +1,7 @@
 import React from "react";
 import Conversation from "./Conversation";
 import getAllUsers from "../../hooks/getAllUsers";
-import { Link } from "react-router-dom";
+import { getRandomEmoji } from "../../utils/emojis";
 
 function ConversationMap() {
   const { users, loading } = getAllUsers();
@@ -14,12 +14,12 @@ function ConversationMap() {
           ) : (
             users?.length !== 0 &&
             users.map((Item, idx) => (
-                <Conversation
-                  key={Item._id}
-                  userData={Item}
-                  lastIdx={idx === users.length - 1}
-                />
-              
+              <Conversation
+                key={Item._id}
+                userData={Item}
+                emoji={getRandomEmoji()}
+                lastIdx={idx === users.length - 1}
+              />
             ))
           )}
         </div>

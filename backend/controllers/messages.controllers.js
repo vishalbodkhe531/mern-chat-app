@@ -1,6 +1,7 @@
 import { Conversation } from "../models/conversation.js";
 import { Messages } from "../models/message.model.js";
 import { User } from "../models/user.model.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const getAllRegisterUser = async (req, res, next) => {
   try {
@@ -40,12 +41,17 @@ export const sendMessage = async (req, res, next) => {
       messages: message,
     });
 
-    // console.log(newMessage);
     if (newMessage) {
       conversation.messageIds.push(newMessage._id);
     }
 
     await Promise.all([newMessage.save(), conversation.save()]);
+
+    const receiverSocketId = getReceiverSocketId(recieverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
+
     res.status(201).json(newMessage);
   } catch (error) {
     console.log(error);
@@ -56,7 +62,6 @@ export const sendMessage = async (req, res, next) => {
 export const getMessages = async (req, res, next) => {
   try {
     const { id: receiverId } = req.params; // Extract receiverId from route parameters
-    // const { senderId } = req.body; // Extract senderId from request body
 
     const senderId = req.user;
     let conversation = await Conversation.findOne({

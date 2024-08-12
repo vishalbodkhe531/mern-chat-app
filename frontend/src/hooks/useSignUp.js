@@ -8,6 +8,11 @@ const useSignUp = (formData) => {
   const navigateUser = useNavigate();
 
   const signUp = async (formData) => {
+
+    const success = handleInputError(formData);
+    if (!success) return;
+
+
     setLoading(true);
     const response = await fetch(`/api/user/register`, {
       method: "POST",
@@ -35,5 +40,31 @@ const useSignUp = (formData) => {
 
   return { signUp, loading };
 };
+
+function handleInputError(formData) {
+  const { fullname, username, password, confirmPassword, gender } = formData;
+
+  if (
+    !fullname.trim() ||
+    !username.trim() ||
+    !password.trim() ||
+    !confirmPassword.trim() ||
+    !gender.trim() === ""
+  ) {
+    toast.error("Please fill all the field");
+    return false;
+  }
+  if (password !== confirmPassword) {
+    toast.error("Password do not match");
+    return false;
+  }
+
+  if (password.length < 6) {
+    toast.error("Password must be atleast 6 character");
+    return false;
+  }
+
+  return true;
+}
 
 export default useSignUp;

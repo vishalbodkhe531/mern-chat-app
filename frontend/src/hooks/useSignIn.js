@@ -41,4 +41,21 @@ const useSignIn = () => {
   return { signIn, loading };
 };
 
+function handleInputError(formData) {
+  const { fullname, username, password, confirmPassword, gender } = formData;
+
+  if (
+    !fullname.trim() ||
+    !username.trim() ||
+    !password.trim() ||
+    !confirmPassword.trim() ||
+    !gender.trim() === ""
+  ) {
+    toast.error("Please fill all the field");
+    return false;
+  }
+
+  return true;
+}
+
 export default useSignIn;

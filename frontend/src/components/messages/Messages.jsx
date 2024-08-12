@@ -3,17 +3,22 @@ import Message from "./Message";
 import getUserMessages from "../../hooks/getUserMessages";
 import useConversation from "../../zustand/zustand";
 import Skeletones from "../skeletons/Skeletones";
+import useListenMessage from "../../hooks/useListenMessage";
 
 function Messages() {
   const { messages, loading } = getUserMessages();
+  // const { loading } = getUserMessages();
+
   const lastMessageRef = useRef();
+
+  // useListenMessage();
 
   useEffect(() => {
     setTimeout(() => {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   }, [messages]);
-
+  // console.log(messages);
   return (
     <>
       <div className="px-4 flex-1 overflow-auto">

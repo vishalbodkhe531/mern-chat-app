@@ -133,16 +133,3 @@ export const updateuser = async (req, res, next) => {
     next(error);
   }
 };
-
-// export const getUserForSideBar = async (req, res, next) => {
-//   try {
-//     const loggedInUserId = req.user._id;
-
-//     const filterUsers = await User.find({
-//       _id: { $ne: loggedInUserId },
-//     }).select("-password");
-//     res.status(200).json(filterUsers);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
