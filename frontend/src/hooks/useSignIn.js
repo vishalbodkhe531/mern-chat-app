@@ -11,10 +11,9 @@ const useSignIn = () => {
 
   const { setAuthUser } = useAuthContext();
   const signIn = async (formData) => {
-    setLoading(true);
-
     const formValidation = handleInputError(formData);
     if (!formValidation) return;
+    setLoading(true);
 
     const response = await fetch(`/api/user/login`, {
       method: "POST",
@@ -50,7 +49,7 @@ function handleInputError(formData) {
 
   if (!userName.trim() || !password.trim() === "") {
     toast.error("Please fill all the field");
-    setLoading(false);
+    // setLoading(false);
     return false;
   }
 

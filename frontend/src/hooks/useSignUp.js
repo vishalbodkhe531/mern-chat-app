@@ -10,8 +10,6 @@ const useSignUp = (formData) => {
   const signUp = async (formData) => {
     const success = handleInputError(formData);
     if (!success) return;
-    // console.log(formData);
-
     setLoading(true);
     const response = await fetch(`/api/user/register`, {
       method: "POST",
