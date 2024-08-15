@@ -8,10 +8,9 @@ const useSignUp = (formData) => {
   const navigateUser = useNavigate();
 
   const signUp = async (formData) => {
-
     const success = handleInputError(formData);
     if (!success) return;
-
+    // console.log(formData);
 
     setLoading(true);
     const response = await fetch(`/api/user/register`, {
@@ -42,13 +41,13 @@ const useSignUp = (formData) => {
 };
 
 function handleInputError(formData) {
-  const { fullname, username, password, confirmPassword, gender } = formData;
+  const { userName, password, confirmPassword, gender, name } = formData;
 
   if (
-    !fullname.trim() ||
-    !username.trim() ||
+    !userName.trim() ||
     !password.trim() ||
     !confirmPassword.trim() ||
+    !name.trim() ||
     !gender.trim() === ""
   ) {
     toast.error("Please fill all the field");

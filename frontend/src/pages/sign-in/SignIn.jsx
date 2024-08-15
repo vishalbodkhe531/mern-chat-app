@@ -35,10 +35,10 @@ function SignIn() {
                   required: "this feild is required",
                 })}
               />
-              {errors.userName && (
-                <span className="text-red-500">{errors.userName.message}</span>
-              )}
             </div>
+            {errors.userName && (
+              <span className="text-red-500 ">{errors.userName.message}</span>
+            )}
             <div>
               <label className="lable p-2">
                 <span>Password</span>
@@ -52,10 +52,12 @@ function SignIn() {
                   required: "this feild is required",
                 })}
               />
-              {errors.password && (
-                <span className="text-red-500">{errors.password.message}</span>
-              )}
             </div>
+            {errors.password && (
+              <span className="text-red-500  block">
+                {errors.password.message}
+              </span>
+            )}
             <Link
               to={"/sign-up"}
               className=" hover:text-blue-600 mt-4 inline-block"

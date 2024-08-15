@@ -13,6 +13,9 @@ const useSignIn = () => {
   const signIn = async (formData) => {
     setLoading(true);
 
+    const formValidation = handleInputError(formData);
+    if (!formValidation) return;
+
     const response = await fetch(`/api/user/login`, {
       method: "POST",
       headers: {
@@ -42,15 +45,10 @@ const useSignIn = () => {
 };
 
 function handleInputError(formData) {
-  const { fullname, username, password, confirmPassword, gender } = formData;
+  console.log(formData);
+  const { userName, password } = formData;
 
-  if (
-    !fullname.trim() ||
-    !username.trim() ||
-    !password.trim() ||
-    !confirmPassword.trim() ||
-    !gender.trim() === ""
-  ) {
+  if (!userName.trim() || !password.trim() === "") {
     toast.error("Please fill all the field");
     return false;
   }

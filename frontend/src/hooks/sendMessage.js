@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import useConversation from "../zustand/zustand";
 import { useState } from "react";
 
@@ -7,7 +8,8 @@ const sendMessage = () => {
   const [loading, setLoading] = useState(false);
 
   const userMesssage = async (formData) => {
-    // console.log(formData);
+    if (formData.trim() === "") return toast.error("Please fill all the field");
+
     setLoading(true);
     const response = await fetch(
       `/api/message/send-message/${selectedConversation._id}`,

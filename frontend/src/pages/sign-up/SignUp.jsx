@@ -36,12 +36,10 @@ function SignUp() {
               name="name"
               {...register("name", { required: "this field is required" })}
             />
-            {errors.name && (
-              <span className="text-red-500 text-sm">
-                {errors.name.message}
-              </span>
-            )}
           </div>
+          {errors.name && (
+            <span className="text-red-500 text-sm">{errors.name.message}</span>
+          )}
           <div>
             <label className="lable p-2">
               <span>User Name</span>
@@ -53,12 +51,12 @@ function SignUp() {
               name="userName"
               {...register("userName", { required: "this field is required" })}
             />
-            {errors.userName && (
-              <span className="text-red-500 text-sm">
-                {errors.userName.message}
-              </span>
-            )}
           </div>
+          {errors.userName && (
+            <span className="text-red-500 text-sm">
+              {errors.userName.message}
+            </span>
+          )}
           <div>
             <label className="lable p-2">
               <span>Password</span>
@@ -76,12 +74,12 @@ function SignUp() {
                 },
               })}
             />
-            {errors.password && (
-              <span className="text-red-500 text-sm">
-                {errors.password.message}
-              </span>
-            )}
           </div>
+          {errors.password && (
+            <span className="text-red-500 text-sm">
+              {errors.password.message}
+            </span>
+          )}
           <div>
             <label className="lable p-2">
               <span> Confirm Password</span>
@@ -101,12 +99,12 @@ function SignUp() {
                 },
               })}
             />
-            {errors.confirmPassword && (
-              <span className="text-red-500 text-sm">
-                {errors.confirmPassword.message}
-              </span>
-            )}
           </div>
+          {errors.confirmPassword && (
+            <span className="text-red-500 text-sm">
+              {errors.confirmPassword.message}
+            </span>
+          )}
           {/* //Gender  */}
 
           <div className="flex">
