@@ -22,9 +22,9 @@ function MessageContainer() {
         </div>
       ) : (
         <>
-          <div className="flex flex-wrap ">
-            <div className="md:min-w-[490px] flex flex-col text-lg mt-4">
-              <div className="">
+          <div className="flex flex-col md:flex-wrap">
+            <div className="flex flex-col text-lg mt-4 w-full md:min-w-[490px]">
+              <div className="mb-2">
                 <span className="">To:</span>
                 <span className="font-semibold text-white ml-3 text-lg">
                   {selectedConversation.name}
@@ -32,13 +32,15 @@ function MessageContainer() {
               </div>
               <div className="sm:h-[17rem] md:h-[27rem] overflow-auto px-3 w-full">
                 {loading ? (
-                  <span className="loading loading-spinner"></span>
+                  <div className="flex justify-center items-center h-full">
+                    <span className="loading loading-spinner"></span>
+                  </div>
                 ) : (
                   <Messages />
                 )}
               </div>
             </div>
-            <div className="w-full">
+            <div className="w-full mt-3">
               <MessageInput />
             </div>
           </div>
