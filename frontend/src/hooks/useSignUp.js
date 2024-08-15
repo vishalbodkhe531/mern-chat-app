@@ -51,6 +51,7 @@ function handleInputError(formData) {
     !gender.trim() === ""
   ) {
     toast.error("Please fill all the field");
+    setLoading(false);
     return false;
   }
   if (password !== confirmPassword) {

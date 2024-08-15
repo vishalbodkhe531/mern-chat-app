@@ -50,6 +50,7 @@ function handleInputError(formData) {
 
   if (!userName.trim() || !password.trim() === "") {
     toast.error("Please fill all the field");
+    setLoading(false);
     return false;
   }
 
